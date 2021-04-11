@@ -1,0 +1,8 @@
+PUT http://localhost:3001/api/notes/6069eb7e1b596437156ca235
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwNjllYjY0MWI1OTY0MzcxNTZjYTIzNCIsInVzZXJuYW1lIjoidGVzdDAwIiwiaWF0IjoxNjE3NTU0MjgyLCJleHAiOjE2MTgxNTkwODJ9.k8ottovyc92RVzLUqMQT-6K8Oni_CVmTJvwhYZJn3Hw
+
+{
+  "content": "Test note",
+  "important": true
+}
