@@ -7,8 +7,8 @@ import LoginForm from './components/LoginForm.js'
 import NoteForm from './components/NoteForm.js'
 
 const App = () => {
-  const [notes, setNotes] = useState([]) 
-  
+  const [notes, setNotes] = useState([])
+
   const [showAll, setShowAll] = useState(true)
   const [errorMessage, setErrorMessage] = useState(null)
 
@@ -50,19 +50,19 @@ const App = () => {
   const toggleImportanceOf = (id) => {
     const note = notes.find(n => n.id === id)
     const changedNote = { ...note, important: !note.important }
-  
+
     noteService
       .update(id, changedNote)
       .then(returnedNote => {
         setNotes(notes.map(note => note.id !== id ? note : returnedNote))
       })
-      .catch(error => {
+      .catch(() => {
         setErrorMessage(
           `Note '${note.content}' was already removed from server`
         )
         setTimeout(() => {
           setErrorMessage(null)
-        }, 5000)   
+        }, 5000)
       })
   }
 
@@ -74,7 +74,7 @@ const App = () => {
         username,
         password
       })
-  
+
       window.localStorage.setItem(
         'loggedNoteAppUser', JSON.stringify(user)
       )
@@ -84,13 +84,12 @@ const App = () => {
       setUser(user)
       setUsername('')
       setPassword('')
-    } catch(e) {
+    } catch (e) {
       setErrorMessage('Wrong credentials')
       setTimeout(() => {
         setErrorMessage(null)
       }, 5000)
     }
-
   }
 
   const notesToShow = showAll
@@ -113,9 +112,10 @@ const App = () => {
               username={username}
               password={password}
               handleUsernameChange={
-                ({target}) => setUsername(target.value)}
+                ({ target }) => setUsername(target.value)
+}
               handlePasswordChange={
-                ({target}) => setPassword(target.value)
+                ({ target }) => setPassword(target.value)
               }
               handleSubmit={handleLogin}
             />
@@ -123,20 +123,20 @@ const App = () => {
 
       <div>
         <button onClick={() => setShowAll(!showAll)}>
-          show {showAll ? 'important' : 'all' }
+          show {showAll ? 'important' : 'all'}
         </button>
-      </div>      
+      </div>
       <ul>
-        {notesToShow.map((note, i) => 
+        {notesToShow.map((note, i) =>
           <Note
             key={i}
-            note={note} 
+            note={note}
             toggleImportance={() => toggleImportanceOf(note.id)}
           />
         )}
-      </ul> 
+      </ul>
     </div>
   )
 }
 
-export default App 
+export default App

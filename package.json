@@ -13,10 +13,12 @@
   "main": "index.js",
   "scripts": {
     "build": "SKIP_PREFLIGHT_CHECK=true npm run build --workspace=app",
+    "lint": "eslint ./api ./app",
     "start": "npm run start --workspace=api",
     "dev:api": "npm run build && npm run dev --workspace=api"
   },
   "eslintConfig": {
+    "ignorePatterns": "build",
     "extends": "./node_modules/standard/eslintrc.json",
     "env": {
       "cypress/globals": true,
