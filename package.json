@@ -15,6 +15,7 @@
     "build": "SKIP_PREFLIGHT_CHECK=true npm run build --workspace=app",
     "lint": "eslint ./api ./app",
     "start": "npm run start --workspace=api",
+    "dev:app": "SKIP_PREFLIGHT_CHECK=true npm run start --workspace=app",
     "dev:api": "npm run build && npm run dev --workspace=api"
   },
   "eslintConfig": {
